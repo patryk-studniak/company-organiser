@@ -8,12 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Example {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 // Required for Next auth
 model Account {
   id                String  @id @default(cuid())
@@ -49,6 +43,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  topics        Topic[]
 }
 
 model VerificationToken {
@@ -59,8 +54,22 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-// Client id : 495708e6d90e57e6ae59
-// secret: 9970ca3504a50c4cf32aee232112e47251fd2349
+model Topic {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  notes     Note[]
+}
 
-// prod cid: 3fa9be9885eb37a3af54
-// prod sec: 793056d81f021ff781273e303ec1abff28f6cb03
+model Note {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  topic     Topic    @relation(fields: [topicId], references: [id])
+  topicId   String
+  title     String
+  content   String   @db.Text
+}
