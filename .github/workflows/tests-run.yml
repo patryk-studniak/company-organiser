@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
-        run: pnpm ci
+        run: npm i
       - name: Run Server tests 
-        run: pnpm run test:server
+        run: npm run test:server
       - name: Run Client tests 
-        run: pnpm run test:client
+        run: npm run test:client
