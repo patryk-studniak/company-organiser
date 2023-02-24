@@ -1,4 +1,4 @@
-export default {
+module.exports = commonJestConfig = {
   clearMocks: true,
   coverageProvider: "v8",
   preset: "ts-jest/presets/js-with-ts",
@@ -6,7 +6,12 @@ export default {
   transform: {
     "^.+\\.mjs$": "ts-jest",
   },
-  moduleNameMapper: {
-    "~/(.*)": "<rootDir>/src/$1",
+  coverageThreshold: {
+    global: {
+      branches: 75,
+      functions: 75,
+      lines: 75,
+      statements: 75,
+    },
   },
 };
