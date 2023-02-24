@@ -1,0 +1,14 @@
+name: pull-request
+on:
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Server tests 
+        run: npm run test:server
+      - name: Run Client tests 
+        run: npm run test:client
