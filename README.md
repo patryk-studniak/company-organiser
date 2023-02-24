@@ -9,8 +9,8 @@ This is a [T3 Stack](https://create.t3.gg/) project.
 - [tRPC](https://trpc.io)
 - [Jest](https://jestjs.io/)
 - [Testing library React](https://testing-library.com/docs/react-testing-library/intro)
-- Vercel server
-- Supabase Postgres database
+- [PostgreSQL database](https://supabase.com/docs/guides/database/overview)
+- [Vercel server](https://vercel.com/dashboard)
 
 ## Planned features
 
