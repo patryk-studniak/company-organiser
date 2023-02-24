@@ -51,6 +51,7 @@ describe("Topics", () => {
 
     await caller.topic.create(input);
 
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     expect(prismaMock.topic.create).toHaveBeenCalledWith({
       data: {
         ...input,
