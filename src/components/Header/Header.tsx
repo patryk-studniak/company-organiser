@@ -1,25 +1,29 @@
 import type { FC } from "react";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import classNames from "classnames";
-import { Avatar } from "~/components/Header/Avatar";
-import { SignInButton } from "~/components/Header/SignInButton";
+import { Avatar } from "~/components/Header/Avatar/Avatar";
+import { SignInButton } from "~/components/Header/Buttons/SignInButton";
+import { SignOutButton } from "~/components/Header/Buttons/SignOutButton";
+import { texts } from "~/texts/texts";
 
+const { appName } = texts;
 export const Header: FC = () => {
   const { data: sessionData } = useSession();
 
   return (
     <div className={classNames("navbar", "bg-primary", "text-primary-content")}>
       <div className={classNames("flex-1", "pl-5", "text-3xl", "font-bold")}>
-        {sessionData?.user?.name ? sessionData.user.name : ""}
+        {sessionData?.user?.name ? `${sessionData.user.name} - ${appName}` : ""}
       </div>
       <div className={classNames("flex-none", "gap-2")}>
-        <div className={classNames("dropdown-end", "dropdown")}>
-          {sessionData?.user ? (
-            <Avatar user={sessionData.user} onClick={() => void signOut()} />
-          ) : (
-            <SignInButton />
-          )}
-        </div>
+        {sessionData?.user ? (
+          <>
+            <SignOutButton />
+            <Avatar user={sessionData.user} />
+          </>
+        ) : (
+          <SignInButton />
+        )}
       </div>
     </div>
   );
