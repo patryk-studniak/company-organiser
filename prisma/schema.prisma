@@ -54,6 +54,7 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+// Model
 model Topic {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
