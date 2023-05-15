@@ -1,16 +1,14 @@
 import { CreateTabForm, Tabs } from "~/components";
-import type { ReactElement } from "react";
 import { MainLayout } from "~/layouts";
+import type { FC } from "react";
 
-export default function HomePage() {
+const HomePage: FC = () => {
   return (
-    <>
+    <MainLayout>
       <CreateTabForm />
       <Tabs />
-    </>
+    </MainLayout>
   );
-}
-
-HomePage.getLayout = function getLayout(page: ReactElement) {
-  return <MainLayout>{page}</MainLayout>;
 };
+
+export default HomePage;

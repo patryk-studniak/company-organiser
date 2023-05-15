@@ -11,7 +11,6 @@ const Home: NextPage = () => {
           name="description"
           content="Application for organising company expenses and planning"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomePage />
     </>
